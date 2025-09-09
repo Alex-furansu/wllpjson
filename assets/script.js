@@ -215,8 +215,7 @@ function updateLists() {
 let wallpapers = {}; // Initialize empty
 let isWallpapersLoaded = false;
 
-const rawUrl =
-	"https://raw.githubusercontent.com/Alex-furansu/wllpjson/refs/heads/main/list.json";
+const rawUrl = "https://alex-furansu.github.io/wllpjson/list.json";
 
 async function loadWallpapers() {
 	try {
