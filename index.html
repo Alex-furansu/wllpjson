@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>D4RK NotePad</title>
+		<link
+			rel="stylesheet"
+			href="https://raw.githubusercontent.com/Alex-furansu/wllpjson/refs/heads/main/assets/style.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="top-bar">
+			<button class="menu-btn" onclick="toggleMenu()">☰</button>
+			<h1>D4RK NotePad</h1>
+			<span></span>
+		</div>
+		<div class="content">
+			<div class="timedisplaycontainer">
+				<div id="timeDisplay" class="time-display"></div>
+			</div>
+			<div class="button-container" id="navButtons">
+				<button onclick="clearLocalStorageRequest()" class="bottom">
+					Clear All Data
+				</button>
+				<button onclick="addNote()" class="left">Add Note</button>
+				<button onclick="editNote()" class="right">Edit Note</button>
+				<button onclick="deleteNote()" class="left">Delete Note</button>
+				<button onclick="showSection('notes')" class="right">View Notes</button>
+				<button onclick="showSection('trash')" class="left">Trash</button>
+				<button onclick="showSection('about')" class="right">About</button>
+				<button onclick="openWallpaperModal()" class="bottom">
+					Pick a Wallpaper
+				</button>
+			</div>
+
+			<div id="notesSection" class="section active">
+				<input
+					type="text"
+					id="newNoteInput"
+					class="input-area"
+					placeholder="Enter note title..."
+				/>
+				<div id="noteList" class="note-list"></div>
+			</div>
+
+			<div id="trashSection" class="section">
+				<div id="trashList" class="trash-list"></div>
+				<div class="button-container trashbuttons">
+					<button onclick="restoreNote()">Restore</button>
+					<button onclick="emptyTrashRequest()">Empty Trash</button>
+				</div>
+			</div>
+
+			<div id="aboutSection" class="section">
+				<div class="logo">D4RK NotePad</div>
+				<p>
+					A futuristic note-taking app built with a D4RK aesthetic. Save, load,
+					and clear your notes with a neon glow. Created for a high-tech,
+					dystopian vibe.
+				</p>
+			</div>
+		</div>
+		<div id="editModal" class="modal">
+			<div class="modal-content">
+				<div class="editNote">
+					<textarea name="editNoteInput" id="editNoteInput"></textarea>
+					<img
+						src="https://voidsec.rf.gd/images/5.png"
+						alt="Decoration"
+						class="edit-note-image"
+					/>
+					<div class="button-group">
+						<button onclick="saveEditedNote()">Save</button>
+						<button onclick="closeModal()">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="wallpaperModal" class="modal">
+			<div class="modal-chooseWallpaper">
+				<h2>Choose Wallpaper</h2>
+				<div class="wallpaper-organizer">
+					<!-- Cellphone Wallpapers Container -->
+					<div class="wallpaper-section">
+						<h3>Cellphone</h3>
+						<div class="wallpaper-preview-grid" id="cellphone-previews"></div>
+					</div>
+					<!-- Divider Line -->
+					<div class="divider-line"></div>
+					<!-- PC Wallpapers Container -->
+					<div class="wallpaper-section">
+						<h3>PC</h3>
+						<div class="wallpaper-preview-grid" id="pc-previews"></div>
+					</div>
+				</div>
+				<div class="button-group">
+					<button onclick="applyWallpaper()">Apply</button>
+					<button onclick="cancelWallpaper()">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<div id="Feedback" class="modal"></div>
+		<div id="conFirmationMessage" class="modal">
+			<div class="modal-conFirmationMessage" id="openMessage"></div>
+		</div>
+
+		<!-- Animation maker or Visual keyframes Editor -->
+		<!-- start::VKE -->
+		<!-- <script src="../malacañang/node_modules/@theatre/browser-bundles/dist/core-and-studio.js"></script>
+		<script>
+			if (typeof window.process === "undefined") {
+				window.process = {
+					env: { NODE_ENV: "production", THEATRE_ENV: "browser" },
+				};
+			}
+			const { core, studio } = Theatre;
+			// studio.initialize();
+			const project = core.getProject("Animation");
+			const sheet = project.sheet("Sheet 1");
+			const obj = sheet.object("Button", {
+				Rotate: {
+					x: 0,
+					y: 0,
+					z: 0,
+				},
+				Scale: {
+					x: 1,
+					y: 1,
+					z: 1,
+				},
+				Translate: {
+					x: 0,
+					y: 0,
+					z: 0,
+				},
+				Skew: {
+					x: 0,
+					y: 0,
+				},
+				opacity: core.types.number(1, { range: [0, 1] }),
+			});
+			const articleHeadingElement = document.getElementById("left");
+			obj.onValuesChange((obj) => {
+				articleHeadingElement.style.transform = `skewX(${obj.Skew.x}deg) skewY(${obj.Skew.y}deg) rotateX(${obj.Rotate.x}deg) rotateY(${obj.Rotate.y}deg) rotateZ(${obj.Rotate.z}deg) scaleX(${obj.Scale.x}) scaleY(${obj.Scale.y}) scaleZ(${obj.Scale.z}) translateX(${obj.Translate.x}px) translateY(${obj.Translate.y}px) translateZ(${obj.Translate.z}px)`;
+				articleHeadingElement.style.opacity = obj.opacity;
+			});
+		</script> -->
+		<!-- end::VKE -->
+	</body>
+	<script src="https://raw.githubusercontent.com/Alex-furansu/wllpjson/refs/heads/main/assets/script.js"></script>
+</html>
